@@ -61,17 +61,23 @@ const UserTable = () => {
       <table className="min-w-full bg-white">
         <thead>
           <tr className="w-full bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+          <th className="py-3 px-6 text-left">S.NO</th>
             <th className="py-3 px-6 text-left">Name</th>
             <th className="py-3 px-6 text-left">Email</th>
+            <th className="py-3 px-6 text-left">Sport</th>
             <th className="py-3 px-6 text-left">Video Status</th>
+            <th className="py-3 px-6 text-left">Certificate</th>
           </tr>
         </thead>
         <tbody className="text-gray-600 text-sm font-light">
-          {currentUsers.map((user) => (
+          {currentUsers.map((user,index) => (
             <tr key={user.id} className="border-b border-gray-200 hover:bg-gray-100">
+              <td className="py-3 px-6 text-left whitespace-nowrap">{indexOfFirstUser+index+1}</td>
               <td className="py-3 px-6 text-left whitespace-nowrap">{user.name}</td>
               <td className="py-3 px-6 text-left">{user.email}</td>
+              <td className="py-3 px-6 text-left">{user.sport}</td>
               <td className="py-3 px-6 text-left">{user.videoStatus}</td>
+              <td className="py-3 px-6 text-left">Download</td>
             </tr>
           ))}
         </tbody>

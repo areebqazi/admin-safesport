@@ -37,6 +37,34 @@
 
 
 }
+.mobile-btn-lang {
+  background-color: #FF3131 !important;
+  color: whitesmoke;
+  border: none;
+
+  border-radius: 5px;
+  margin: 2px;
+  transition: all.2s ease-in-out;
+  font-size: 18px;
+  cursor: pointer !important;
+}
+.lang-button-div {
+  position: absolute;
+  /* background-color: #FF3131 !important; */
+  color: whitesmoke;
+  border: none;
+  min-width: 160px;
+  border-radius: 5px;
+  top: 15px;
+  right: 18px;
+  transition: all.2s ease-in-out;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 75px;
+}
 
 @media (max-width: 425px) {
   .logo {
@@ -47,6 +75,7 @@
     margin-left: -145px;
 
   }
+  
 
 
   .header {
