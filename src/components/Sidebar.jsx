@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <div className="bg-gray-800 text-white  w-64 flex-shrink-0">
+    <div className="bg-gray-800 text-white  w-64 flex-shrink-0 min-h-screen">
       <div className="p-4">
         <h1 className="text-2xl font-bold">Safe Sport</h1>
         <p className="mt-2 text-gray-400">Admin Dashboard</p>

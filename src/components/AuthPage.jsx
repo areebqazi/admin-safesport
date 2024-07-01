@@ -56,9 +56,9 @@ const AuthPage = () => {
               <div className="mt-1">
                 <input
                   id="email"
-                  // name="email"
-                  // type="email"
-                  // autoComplete="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
                   required
                   value={signInData.email}
                   onChange={handleInputChange}
