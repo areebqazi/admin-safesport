@@ -28,21 +28,21 @@ const Videos = () => {
     fetchVideos();
   }, []);
 
-  const handleDelete = async (id) => {
-    try {
-      const response = await axios.delete(`${API}/videos/${id}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`, // Send accessToken in the Authorization header
-        },
-      });
-      if (response.status === 200) {
-        alert("Video deleted successfully!");
-        setVideos(videos.filter((video) => video._id !== id));
-      }
-    } catch (error) {
-      console.error("Error deleting video:", error);
-    }
-  };
+  // const handleDelete = async (id) => {
+  //   try {
+  //     const response = await axios.delete(`${API}/videos/${id}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${accessToken}`, // Send accessToken in the Authorization header
+  //       },
+  //     });
+  //     if (response.status === 200) {
+  //       alert("Video deleted successfully!");
+  //       setVideos(videos.filter((video) => video._id !== id));
+  //     }
+  //   } catch (error) {
+  //     console.error("Error deleting video:", error);
+  //   }
+  // };
 
   const handleEdit = (video) => {
     setEditVideo(video);
@@ -86,7 +86,7 @@ const Videos = () => {
                     >
                       Edit
                     </button>
-                    <button
+                    {/* <button
                       onClick={(e) => {
                         e.stopPropagation();
                         handleDelete(video._id);
@@ -94,7 +94,7 @@ const Videos = () => {
                       className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
                     >
                       Delete
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </div>

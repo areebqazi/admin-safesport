@@ -1,24 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Pagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
-
-const usersData = [
-  { "id": 1, "name": "John Doe", "email": "john.doe@example.com", "videoStatus": "Completed" },
-  { "id": 2, "name": "Jane Smith", "email": "jane.smith@example.com", "videoStatus": "Pending" },
-  { "id": 3, "name": "Michael Johnson", "email": "michael.johnson@example.com", "videoStatus": "In Progress" },
-  { "id": 4, "name": "Emily Brown", "email": "emily.brown@example.com", "videoStatus": "Completed" },
-  { "id": 5, "name": "David Lee", "email": "david.lee@example.com", "videoStatus": "Pending" },
-  { "id": 6, "name": "Sarah Miller", "email": "sarah.miller@example.com", "videoStatus": "In Progress" },
-  { "id": 7, "name": "Daniel Wilson", "email": "daniel.wilson@example.com", "videoStatus": "Completed" },
-  { "id": 8, "name": "Olivia Davis", "email": "olivia.davis@example.com", "videoStatus": "Pending" },
-  { "id": 9, "name": "James Martinez", "email": "james.martinez@example.com", "videoStatus": "In Progress" },
-  { "id": 10, "name": "Sophia Garcia", "email": "sophia.garcia@example.com", "videoStatus": "Completed" },
-  { "id": 11, "name": "Alexander Taylor", "email": "alexander.taylor@example.com", "videoStatus": "Pending" },
-  { "id": 12, "name": "Isabella Rodriguez", "email": "isabella.rodriguez@example.com", "videoStatus": "In Progress" }
-];
+import { API } from '../constants';
+import axios from 'axios';
 
 const UserTable = () => {
+  const [usersData, setUsersData] = useState([]);
   const [users, setUsers] = useState(usersData);
+  const user = localStorage.getItem("user");
+  const userr = JSON.parse(user);
+  const accessToken = userr?.user?.token;
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(`${API}/user`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`, // Send accessToken in the Authorization header
+          },
+        });
+        setUsersData(response.data);
+        setUsers(response.data);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    };
+  
+    fetchUsers();
+  }, []);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(9); // Change this number as needed
@@ -42,6 +50,7 @@ const UserTable = () => {
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   // Slice users array to display only users for the current page
   const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+  console.log(currentUsers,"currentUsers");
 
   const onPageChange = (page) => {
     setCurrentPage(page);
@@ -76,7 +85,7 @@ const UserTable = () => {
               <td className="py-3 px-6 text-left whitespace-nowrap">{user.name}</td>
               <td className="py-3 px-6 text-left">{user.email}</td>
               <td className="py-3 px-6 text-left">{user.sport}</td>
-              <td className="py-3 px-6 text-left">{user.videoStatus}</td>
+              <td className="py-3 px-6 text-left">{user.videoStatus.filter(video => video.watched).length}</td>
               <td className="py-3 px-6 text-left">Download</td>
             </tr>
           ))}
