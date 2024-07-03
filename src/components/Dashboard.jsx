@@ -85,7 +85,7 @@ const UserTable = () => {
               <td className="py-3 px-6 text-left whitespace-nowrap">{user.name}</td>
               <td className="py-3 px-6 text-left">{user.email}</td>
               <td className="py-3 px-6 text-left">{user.sport}</td>
-              <td className="py-3 px-6 text-left">{user.videoStatus.filter(video => video.watched).length}</td>
+              <td className="py-3 px-6 text-left">{user.videoStatus.filter(video => video.unlocked).length}</td>
               <td className="py-3 px-6 text-left">Download</td>
             </tr>
           ))}
