@@ -26,14 +26,14 @@ const Sidebar = () => {
         >
           Videos
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/create-video"
           exact
           className="block py-2 px-4 text-gray-300 hover:bg-gray-700 hover:text-white"
           activeClassName="bg-gray-900"
         >
           Create Video
-        </NavLink>
+        </NavLink> */}
         {/* Add more links as needed */}
       </nav>
     </div>

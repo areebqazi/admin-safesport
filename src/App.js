@@ -37,12 +37,12 @@ function App() {
                   user ? <Videos /> : <Navigate to="/login" replace />
                 }
               />
-              <Route
+              {/* <Route
                 path="/create-video"
                 element={
                   user ? <CreateVideo /> : <Navigate to="/login" replace />
                 }
-              />
+              /> */}
               <Route
                 path="/login"
                 element={!user ? <AuthPage /> : <Dashboard />}
