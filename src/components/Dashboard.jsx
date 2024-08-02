@@ -121,7 +121,7 @@ const UserTable = () => {
             <th className="py-3 px-6 text-left">Email</th>
             <th className="py-3 px-6 text-left">Sport</th>
             <th className="py-3 px-6 text-left">Course Completed?</th>
-            <th className="py-3 px-6 text-left">Certificate Downloaded?</th>
+            {/* <th className="py-3 px-6 text-left">Certificate Downloaded?</th> */}
             <th className="py-3 px-6 text-left">Certificate</th>
           </tr>
         </thead>
@@ -145,11 +145,11 @@ const UserTable = () => {
                   ? "Yes"
                   : "No"}
               </td>
-              <td className="py-3 px-6 text-left">
+              {/* <td className="py-3 px-6 text-left">
                 {user.certificateDataUrl && user?.certificateDataUrl !== ""
                   ? "Yes"
                   : "No"}
-              </td>
+              </td> */}
               <td className="py-3 px-6 text-left">
                 <button
                   className={`px-4 py-2 text-white rounded-md ${
