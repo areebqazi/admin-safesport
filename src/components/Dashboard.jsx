@@ -41,19 +41,22 @@ const UserTable = () => {
     // Filter through original usersData array
     const filteredUsers = usersData.filter(
       (user) =>
-        user.name.toLowerCase().includes(value) ||
-        user.email.toLowerCase().includes(value) ||
-        user.videoStatus.toLowerCase().includes(value)
+        user.firstName.toLowerCase().includes(value) ||
+        user.lastName.toLowerCase().includes(value) ||
+        user.email.toLowerCase().includes(value) 
     );
     setUsers(filteredUsers);
   };
 
   const handleDownloadExcel = () => {
     const dataToExport = users.map((user) => ({
-      Name: user.name,
+      Name: user.firstName + " " + user.lastName,
+      "Date of Birth": user.birthdate,
       Email: user.email,
       Sport: user.sport,
-      "Video Status": user.videoStatus.filter((video) => video.unlocked).length,
+      "Course Completed": user.videoStatus.every((video) => video.watched)
+        ? "Yes"
+        : "No",
     }));
 
     const worksheet = XLSX.utils.json_to_sheet(dataToExport);
