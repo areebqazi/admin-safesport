@@ -43,7 +43,7 @@ const UserTable = () => {
       (user) =>
         user.firstName.toLowerCase().includes(value) ||
         user.lastName.toLowerCase().includes(value) ||
-        user.email.toLowerCase().includes(value) 
+        user.email.toLowerCase().includes(value)
     );
     setUsers(filteredUsers);
   };
@@ -57,6 +57,9 @@ const UserTable = () => {
       "Course Completed": user.videoStatus.every((video) => video.watched)
         ? "Yes"
         : "No",
+      "Course Completion Date": user?.courseCompletionDate
+        ? new Date(user.courseCompletionDate).toLocaleDateString("en-GB")
+        : "N/A",
     }));
 
     const worksheet = XLSX.utils.json_to_sheet(dataToExport);
@@ -78,7 +81,7 @@ const UserTable = () => {
   };
 
   const sendCertificateByEmail = async (email, certificateDataUrl) => {
-    if(!email || !certificateDataUrl) {
+    if (!email || !certificateDataUrl) {
       alert("Email or certificate not found. Please try again.");
       return;
     }
@@ -124,6 +127,7 @@ const UserTable = () => {
             <th className="py-3 px-6 text-left">Email</th>
             <th className="py-3 px-6 text-left">Sport</th>
             <th className="py-3 px-6 text-left">Course Completed?</th>
+            <th className="py-3 px-6 text-left">Course Completion Date</th>
             {/* <th className="py-3 px-6 text-left">Certificate Downloaded?</th> */}
             <th className="py-3 px-6 text-left">Certificate</th>
           </tr>
@@ -148,6 +152,14 @@ const UserTable = () => {
                   ? "Yes"
                   : "No"}
               </td>
+              <td className="py-3 px-6 text-left">
+                {user?.courseCompletionDate
+                  ? new Date(user.courseCompletionDate).toLocaleDateString(
+                      "en-GB"
+                    )
+                  : "N/A"}
+              </td>
+
               {/* <td className="py-3 px-6 text-left">
                 {user.certificateDataUrl && user?.certificateDataUrl !== ""
                   ? "Yes"
