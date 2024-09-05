@@ -125,6 +125,7 @@ const UserTable = () => {
             <th className="py-3 px-6 text-left">First Name</th>
             <th className="py-3 px-6 text-left">Last Name</th>
             <th className="py-3 px-6 text-left">Email</th>
+            <th className="py-3 px-6 text-left">DOB</th>
             <th className="py-3 px-6 text-left">Sport</th>
             <th className="py-3 px-6 text-left">Course Completed?</th>
             <th className="py-3 px-6 text-left">Course Completion Date</th>
@@ -146,6 +147,7 @@ const UserTable = () => {
               </td>
               <td className="py-3 px-6 text-left">{user?.lastName}</td>
               <td className="py-3 px-6 text-left">{user?.email}</td>
+              <td className="py-3 px-6 text-left">{user?.birthdate}</td>
               <td className="py-3 px-6 text-left">{user?.sport}</td>
               <td className="py-3 px-6 text-left ">
                 {user?.videoStatus.every((video) => video.watched)
