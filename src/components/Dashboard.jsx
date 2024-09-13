@@ -43,7 +43,8 @@ const UserTable = () => {
       (user) =>
         user.firstName.toLowerCase().includes(value) ||
         user.lastName.toLowerCase().includes(value) ||
-        user.email.toLowerCase().includes(value)
+      user.email.toLowerCase().includes(value) ||
+      user.sport.toLowerCase().includes(value)
     );
     setUsers(filteredUsers);
   };
@@ -106,7 +107,7 @@ const UserTable = () => {
       <div className="mb-4 flex justify-between items-center">
         <input
           type="text"
-          placeholder="Search by name, email"
+          placeholder="Search by name, email and sport"
           className="px-4 py-2 border border-gray-300 rounded-md"
           value={searchTerm}
           onChange={handleSearch}
